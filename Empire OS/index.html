@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empire OS</title>
+
+    <!-- ===== Links ===== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
+</head>
+<body onload="initClock()">
+    <div class="loader">
+        <lord-icon
+            src="https://cdn.lordicon.com/ulhdumaq.json"
+            trigger="loop"
+            colors="primary:#fff,secondary:#fff"
+            style="width:250px;height:250px">
+        </lord-icon>
+    </div>
+    <div class="lock_screen">
+        <div class="lock">
+            <lord-icon
+                src="https://cdn.lordicon.com/tyounuzx.json"
+                trigger="loop"
+                delay="1000"
+                colors="primary:#fff,secondary:#fff"
+                stroke="100"
+                style="width:50px;height:50px">
+            </lord-icon>
+        </div>
+        <div class="time">
+            <div class="datetime">
+                <div class="time">
+                    <span id="hour">00</span>:
+                    <span id="minutes">00</span>:
+                    <span id="seconds">00</span>
+                    <span id="period">AM</span>
+                </div>
+                <div class="date">
+                    <span id="dayname">Day</span>,
+                    <span id="month">Month</span>
+                    <span id="daynum">00</span>,
+                    <span id="year">Year</span>
+                </div>
+            </div>
+        </div>
+        <div class="finger_print">
+            <p>Keep finger on sensor</p>
+            <lord-icon
+                src="https://cdn.lordicon.com/rqqkvjqf.json"
+                trigger="click"
+                colors="primary:#fff,secondary:#fff"
+                style="width:100px;height:100px"
+                onclick="navigator.vibrate(100)"
+                id="Lopen">
+            </lord-icon>
+        </div>
+    </div>
+    <div class="home_screen">
+        <div class="clock">
+            <div class="middle"></div>
+            <div class="clock-face">
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="hand hour-hand"></div>
+                <div class="hand min-hand"></div>
+                <div class="hand second-hand"></div>
+            </div>
+        </div>
+        <div class="apps">
+            <div class="app">
+                <img src="https://media.macosicons.com/parse/files/macOSicons/da34ba1f5028acd556e5ac4ba4a48df1_low_res_1620812276393.png" alt="whatsapp">
+                <img src="https://media.macosicons.com/parse/files/macOSicons/85446ebe5f54c71550703f9780e12760_low_res_1619172112038.png" alt="ClassRom">
+                <img src="https://media.macosicons.com/parse/files/macOSicons/bfa46bb7cac25c36ed0a28aea5043e2b_low_res_Google_Keep.png" alt="Notes">
+                <img src="https://media.macosicons.com/parse/files/macOSicons/3cf137bde4f67e4967f65202f73b839a_low_res_Apple_Locked__Turquoise_.png" alt="Lock" id="Lock"  onclick="navigator.vibrate(100)">
+            </div>
+            <div class="app" style="margin-top: 25px;">
+                <img src="https://media.macosicons.com/parse/files/macOSicons/4b861a87491efcb1579167a1491b95df_low_res_Instagram.png" alt="instagram">
+                <img src="https://media.macosicons.com/parse/files/macOSicons/50a86c480bd278a9dec1edea419511d6_low_res_Camera.png" alt="Camera" id="Camera">
+                <img src="https://media.macosicons.com/parse/files/macOSicons/1924d1d60853c67a17ca48f96266f8cc_Google_Messages.png" alt="Messages">
+                <img src="https://media.macosicons.com/parse/files/macOSicons/1c4acae6b30b3adb43905da5f718d549_low_res_Google_Drive.png" alt="Files">
+            </div>
+        </div>
+        <div class="dock">
+            <div class="dots">
+                <div class="d0"></div>
+                <div class="d0"></div>
+                <div class="d0"></div>
+            </div>
+            <img src="https://media.macosicons.com/parse/files/macOSicons/ef6078d453702f48ec425f2714be49a3_low_res_Google.png" alt="Google">
+            <img src="https://media.macosicons.com/parse/files/macOSicons/800b965e32887a492a05f51fe20e163d_low_res_1618775219960.png" alt="Main">
+            <img src="https://media.macosicons.com/parse/files/macOSicons/9e67f579ac9f6a754c11147889ce8e9c_low_res_Google_Maps.png" alt="Maps">
+            <img src="https://media.macosicons.com/parse/files/macOSicons/d5e1d6a78e1affa100a361115085b1e5_low_res_1621080647686.png" alt="Calendar">
+        </div>
+    </div>
+
+
+
+<div class="name">Created  By Manish</div>
+<!-- ===== Scripts ===== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+    $('.loader').ready(function(){
+        setTimeout(function(){
+            $(".loader").fadeOut();
+        }, 1500);
+    })
+    $('#Lopen').click(function(){
+        setTimeout(function(){
+            $('.lock_screen').toggleClass("Lopen");
+        }, 500);
+    });
+    $('#Lock').click(function(){
+        $('.lock_screen').toggleClass("Lopen");
+    });
+</script>
+<script>
+    function updateClock(){
+      var now = new Date();
+      var dname = now.getDay(),
+          mo = now.getMonth(),
+          dnum = now.getDate(),
+          yr = now.getFullYear(),
+          hou = now.getHours(),
+          min = now.getMinutes(),
+          sec = now.getSeconds(),
+          pe = "AM";
+
+          if(hou >= 12){
+            pe = "PM";
+          }
+          if(hou == 0){
+            hou = 12;
+          }
+          if(hou > 12){
+            hou = hou - 12;
+          }
+
+          Number.prototype.pad = function(digits){
+            for(var n = this.toString(); n.length < digits; n = 0 + n);
+            return n;
+          }
+
+          var months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"];
+          var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+          var values = [week[dname], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+          for(var i = 0; i < ids.length; i++)
+          document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+    }
+
+    function initClock(){
+      updateClock();
+      window.setInterval("updateClock()", 1);
+    }
+
+    const secondHand = document.querySelector('.second-hand');
+    const minuteHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');
+    function setDate() {
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const secondsDegrees = ((seconds / 60) * 360) + 90;
+        secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+        const minutes = now.getMinutes();
+        const minutesDegrees = ((minutes / 60) * 360) + 90;
+        minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+
+        const hours = now.getHours();
+        const hoursDegrees = ((hours / 12) * 360) + 90;
+        hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+    }
+    setInterval(setDate,1000);
+  
+</script>
+</body>
+</html>
